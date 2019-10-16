@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<title>Guess the number</title>
+</head>
+<body>
+	<h3>Guess the number</h3>
+	<input type="text" name="guess" id="guess"><button onclick="guessPressed()">Guess the number</button>
+	<button onclick="resetPressed()">Reset</button>
+
+	<script type="text/javascript">
+		var randomNumber = Math.ceil(Math.random() *100);
+		var chances = 3;
+		var win = false;
+
+		function guessPressed(){
+			var numberGuess = document.getElementById ('guess').value
+			console.log (randomNumber)
+		
+
+			if (randomNumber > numberGuess) {
+				alert ("Number too low");				
+			}
+			else if (randomNumber < numberGuess){
+				alert ("Number too High");
+			}
+			else {
+				alert ("Congrats Spot. You da man");
+				resetPressed ()
+				win = true;
+			}
+			chances--;
+			if (chances == 0) {
+				alert ("Too bad..The number is "+randomNumber);
+				resetPressed ()
+			}
+			else {
+				if (!win){
+				alert (chances+" Guesses Remaining");
+			}
+			}
+	}
+		function resetPressed(){
+			alert ("Lets start again..dont worry and better luck next time")	
+			chances = 3;
+			randomNumber = Math.ceil(Math.random() *100);
+			win = false;
+			document.getElementById("guess").value=""
+
+		}
+
+	</script>
+
+
+</body>
+</html>
